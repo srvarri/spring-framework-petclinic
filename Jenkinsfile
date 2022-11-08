@@ -11,7 +11,7 @@ pipeline {
         stage('JFROG configuration') {
                     steps {
                         rtMavenDeployer (
-                            id: "MVN_DEFAULT",
+                            id: "MAVEN_DEFAULT",
                             serverId: "JFROG_SPC",
                             releaseRepo: "spc1-libs-release-local",
                             snapshotRepo: "spc1-libs-snapshot-local"
@@ -25,7 +25,7 @@ pipeline {
                             tool: "maven", // Tool name from Jenkins configuration
                             pom: "pom.xml",
                             goals: "clean install",
-                            deployerId: "MVN_DEFAULT"
+                            deployerId: "MAVEN_DEFAULT"
                             
                         )
                     }

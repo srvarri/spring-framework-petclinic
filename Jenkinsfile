@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'JDK11' }
+    agent any
         stages {
             stage('vcs') {
                    steps {
@@ -11,10 +11,10 @@ pipeline {
         stage('JFROG configuration') {
                     steps {
                         rtMavenDeployer (
-                            id: 'MAVEN_DEPLOYER',
-                            serverId: 'JFROG_SPC',
-                            releaseRepo: 'spcc-libs-release-local',
-                            snapshotRepo: 'spcc-libs-snapshot-local'
+                            id: "MVN_DEFAULT",
+                            serverId: "JFROG_SPC",
+                            releaseRepo: "spcc-libs-release-local",
+                            snapshotRepo: "spcc-libs-snapshot-local"
                         )
                     }
                 }
@@ -22,10 +22,10 @@ pipeline {
         stage('maven build') {
                     steps {
                         rtMavenRun (
-                            tool: 'MAVEN', // Tool name from Jenkins configuration
-                            pom: 'pom.xml',
-                            goals: 'clean install',
-                            deployerId: "MAVEN_DEPLOYER"
+                            tool: "MVN", // Tool name from Jenkins configuration
+                            pom: "pom.xml",
+                            goals: "clean install",
+                            deployerId: "MVN_DEFAULT"
                             
                         )
                     }
@@ -37,7 +37,6 @@ pipeline {
                             serverId: "JFROG_SPC"
                         )
                     }
-                }
-        
+        }
     }
 }

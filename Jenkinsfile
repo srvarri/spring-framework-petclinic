@@ -13,8 +13,8 @@ pipeline {
                         rtMavenDeployer (
                             id: "MVN_DEFAULT",
                             serverId: "JFROG_SPC",
-                            releaseRepo: "spcc-libs-release-local",
-                            snapshotRepo: "spcc-libs-snapshot-local"
+                            releaseRepo: "spc1-libs-release-local",
+                            snapshotRepo: "spc1-libs-snapshot-local"
                         )
                     }
                 }
@@ -22,7 +22,7 @@ pipeline {
         stage('maven build') {
                     steps {
                         rtMavenRun (
-                            tool: "MVN", // Tool name from Jenkins configuration
+                            tool: "maven", // Tool name from Jenkins configuration
                             pom: "pom.xml",
                             goals: "clean install",
                             deployerId: "MVN_DEFAULT"

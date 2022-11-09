@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'touch 1.txt'
+                sh 'ansible-playbook -i hosts learn.yaml'
             }
         }
     }

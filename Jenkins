@@ -1,0 +1,16 @@
+pipeline {
+    agent  { label 'openjdk11' }
+    stages {
+        stage('vcs') {
+            steps {
+                git branch: 'master', url: 'https://github.com/srvarri/spring-framework-petclinic.git'
+            }
+
+        }
+        stage('build') {
+            steps {
+                sh 'touch 1.txt'
+            }
+        }
+    }
+}            

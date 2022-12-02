@@ -10,7 +10,7 @@ pipeline {
         stage('image build') {
             steps {
                 sh ' docker image build -t spc_two:1.0 .'
-                sh sudo chown ubuntu:ubuntu unix:///var/run/docker.sock
+                ///sh sudo chown ubuntu:ubuntu unix:///var/run/docker.sock
             
             }
         }

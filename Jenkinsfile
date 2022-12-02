@@ -9,12 +9,12 @@ pipeline {
         }
         stage('image build') {
             steps {
-                sh 'docker image build -t spc_one:1.0 .'
+                sh 'docker image build -t spc_two:1.0 .'
             }
         }
         stage('container run') {
             steps {
-                sh 'docker container run -d --name spc -p 8081:8080 spc_one:1.0'
+                sh 'docker container run -d --name spc -p 8081:8080 spc_two:1.0'
             }
         }
     }

@@ -7,9 +7,14 @@ pipeline {
             }
 
         }
-        stage('build') {
+        stage('image build') {
             steps {
-                sh 'ansible-playbook -i hosts learn.yaml'
+                sh 'docker image build -t spc_one:1.0 .'
+            }
+        }
+        stage('container run') {
+            steps {
+                sh 'docker container run -d --name spc -p 8081:8080 spc_one:1.0'
             }
         }
     }
